@@ -1,0 +1,48 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<img src="{{ officer.image }}" class="img-thumbnail" alt="">
+		</div>
+		<div class="col-sm-8">
+			{{ officer.rank }}
+			{{ officer.first }} {{ officer.last}}
+			Badge Number: {{ officer.badge }}
+			Department History:
+			{{ officer.depts }}
+		</div>
+		<div class="col-sm-2">
+			{{ officer.stars }}
+		</div>
+	</div>
+	<div class="row" id="reviews">
+		{% if logged_in %}
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-10">
+				<div class="form-group">
+					<textarea class="form-control" rows="4" id="create-review"></textarea>
+					<button type="button" class="btn btn-primary">Submit Review</button>
+				</div>
+			</div>
+		{% else %}
+			Have a review for this officer? Log in or register to create a review!
+		{% endif %}
+
+		{% if officer.reviews %}
+			<div class="container-fluid">
+				{% for review in officer.reviews %}
+					<div class="row">
+						<div class="col-sm-2">
+							{{ review.username }}
+							{{ review.stars }}
+						</div>
+						<div class="col-sm-10">
+							{{ review.text }}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+</div>

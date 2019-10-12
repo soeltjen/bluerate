@@ -1,0 +1,29 @@
+{% if officers %}
+	{% for officer in officers %}
+	<table>
+		<tr>
+			<td rowspan="3">
+				{{ officer.image }}
+			</td>
+			<td>
+				<b> {{ officer.rank }} </b>
+				{{ officer.first }}
+				{{ officer.last }}
+			</td>
+			<td>
+				{{ officer.city }}
+			</td>
+		</tr>
+		<tr></tr>
+			<td>
+				{{ officer.badge }}
+			</td>
+			<td>
+				{{ officer.stars }}
+			</td>
+		<tr></tr>
+	</table>
+	{% endfor %}
+{% else %}
+	<p> We can't find the officer you're looking for. You may create a new officer, or search again. </p>
+{% endif %}
