@@ -1,0 +1,4 @@
+# bluerate.cnf
+[client]
+database = bluerate
+default-character-set = utf8
