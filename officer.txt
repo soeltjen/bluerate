@@ -1,0 +1,10 @@
+CREATE TABLE `officer` (
+  `badgeNumber` int(6) DEFAULT NULL,
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `numberStars` int(11) DEFAULT NULL,
+  `profil_id` int(11) NOT NULL,
+  PRIMARY KEY (`profil_id`)
+
+INSERT INTO `officer` VALUES (1234,'john','smith','mineapolis',3,1),(3456,'jane','smith','chicago',2,2),(6789,'hadia','gueye','iowa',5,3);
