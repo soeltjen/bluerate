@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import loader
+#from django.template import loader
 
 from .models import Officer
 
@@ -11,9 +11,8 @@ def index(request):
 
 def profile(request, officer_id):
     officer_data = Officer.from_db()
-    template = loader.get_template('officer.html')
-    context = {}
-    return HttpResponse("Badge number:")
+    context = {'officer_data': officer_data}
+    return render(request)
 
 def add_review(request):
     return HttpResponse()
