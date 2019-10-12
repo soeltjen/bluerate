@@ -10,9 +10,9 @@ def index(request):
     return HttpResponse("This is the review page.")
 
 def profile(request, officer_id):
-    officer_data = Officers.from_db()
+    officer_data = Officer.objects.all()
     context = {'officer_data': officer_data}
-    return render(request)
+    return render(request,'profile.html',context)
 
 def add_review(request):
     return HttpResponse()
