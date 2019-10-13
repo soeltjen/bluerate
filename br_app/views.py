@@ -10,7 +10,8 @@ def index(request):
     return HttpResponse("This is the review page.")
 
 def profile(request, officer_id):
-    officer_data = Officer.objects.all()
+    officer_data = Officers.objects.raw('SELECT * FROM officers \
+                                       WHERE profileid==officer_id')
     context = {'officer_data': officer_data}
     return render(request,'profile.html',context)
 
@@ -18,8 +19,4 @@ def add_review(request):
     return HttpResponse()
 
 def search(request):
-    template = loader.get_template('results.html')
-    context = {
-            'officers' : None
-    }
     return HttpResponse()
