@@ -5,7 +5,7 @@
 {% if officers %}
 	{% for officer in officers %}
 	<a class="search_result" href="/profile/{{ officer.profile_id }}">
-		<div class="row justify-content-around align-self-center w-100 m-4">
+		<div class="row justify-content-around align-self-center w-100 m-4" style="color:black; font-size: 22" >
 			<div class="col-sm-4">
 				{% load static %}
 				<img src="{% static "br_app/male_default.png" %}" class="img-thumbnail" alt="">

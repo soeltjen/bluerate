@@ -2,40 +2,41 @@
 {% include "navbar.html" %}
 
 <div class="container m-4">
-	<div class="row">
+	<div class="row" style="color:black">
 		<div class="col-sm-2">
 			{% load static %}
 			<img src="{% static "br_app/male_default.png" %}" class="img-thumbnail" alt="">
 			<!-- <img src="{{ officer.image }}" class="img-thumbnail" alt=""> -->
 		</div>
 		<div class="col-sm-8">
-			{{ officer.rank }}
+			<b>Name:</b> {{ officer.rank }}
 			{{ officer.firstname }} {{ officer.lastname}}
 			<br>
-			Badge Number: {{ officer.badgenumber }}
+			<b>Badge Number:</b> {{ officer.badgenumber }}
 			<br>
-			Department History:
+			<b>Department History:</b>
 			{{ officer.city }}
 		</div>
 		<div class="col-sm-2">
-			Rating: {{ officer.numberstars }}/5
+			<b>Rating:</b> {{ officer.numberstars }}/5
 		</div>
 	</div>
 	<hr>
 	<div class="row" id="reviews">
 		{% if logged_in %}
 			<div class="col-sm-12">
-				<form class="form-inline" action="/new_review">
+				<form class="form-inline" id="review_form" action="/add" method="get">
 	 				<div class="form-group w-20">
-						<input class="form-control" id="username" placeholder="Username"></textarea>
+						<input class="form-control" type="text" name="user" placeholder="Username">
 					</div>
 					<div class="form-group w-20">
-						<input class="form-control" id="rating" placeholder="Rating (out of 5)"></textarea>
+						<input class="form-control" type="text" name="rating" placeholder="Rating (out of 5)">
 					</div>
 					<div class="form-group w-100">
-						<input class="form-control w-100" id="review" placeholder="What do you think?"></textarea>
+						<input class="form-control w-100" type="text" name="review" placeholder="What do you think?">
 					</div>
-					<button type="button" class="btn btn-primary">Submit Review</button>
+					<input type="submit" form="review_form" class="btn btn-primary"
+             name="submit-btn" value="Submit">
 				</form>
 			</div>
 		{% else %}
@@ -43,17 +44,22 @@
 		{% endif %}
 		{% if reviews %}
 			<div class="container-fluid">
+				<h1 style="color: black"> Reviews </h1>
 				{% for review in reviews %}
-					<div class="row">
-						<div class="col-sm-12">
-							{{ review.user.username }}	{{ review.stars }}/5
-							<br>
-							<b>{{ review.summary}}</b>
+					<div class="m-4" style="color: black">
+						<div class="row">
+							<div class="col-sm-12">
+								<b>User:</b> {{ review.user.username }}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<b>Rating:</b> {{ review.stars }}/5
+								<br>
+								<b>{{ review.summary}}</b>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							{{ review.description }}
+						<div class="row">
+							<div class="col-sm-12">
+								<b>Summary: </b> {{ review.description }}
+							</div>
 						</div>
 					</div>
 				{% endfor %}
