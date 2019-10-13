@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 #from django.template import loader
 
-from .models import Officers
+from .models import Officer
 
 # Create your views here.
 
@@ -19,4 +19,8 @@ def add_review(request):
     return HttpResponse()
 
 def search(request):
-    return HttpResponse()
+    template = loader.get_template('results.html')
+    context = {
+            'officers' : None
+    }
+    return HttpResponse(template.render(context, request))

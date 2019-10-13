@@ -1,7 +1,10 @@
-CREATE TABLE `user` (
-  `u_profile_id` int(11) NOT NULL,
-  `firstName` varchar(45) DEFAULT NULL,
-  `lastName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`u_profile_id`)
+CREATE TABLE user (
+  u_profile_id int(11) NOT NULL,
+  firstName varchar(45) DEFAULT NULL,
+  lastName varchar(45) DEFAULT NULL,
+  username varchar(45) NOT NULL,
+  PRIMARY KEY (u_profile_id)
+);
 
-INSERT INTO `user` VALUES (1,'abdoul','al'),(2,'suhayb','ali'),(3,'sebastian','oeltgin');
+INSERT INTO user VALUES
+(1,'Abdulrahman','Al-Sharabati','alekulyn'),(2,'Suhayb','Ali Ibrahim','suhail'),(3,'Sebastian','Oeltjen', 'soeltjen');
