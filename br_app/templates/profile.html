@@ -25,18 +25,22 @@
 	<div class="row" id="reviews">
 		{% if logged_in %}
 			<div class="col-sm-12">
-				<form class="" action="/new_review">
-				<div class="form-group">
-					<input class="form-control w-20" id="username" placeholder="Username"></textarea>
-					<input class="form-control w-20" id="rating" placeholder="Rating (out of 5)"></textarea>
-					<input class="form-control" id="review" placeholder="What do you think?"></textarea>
+				<form class="form-inline" action="/new_review">
+	 				<div class="form-group w-20">
+						<input class="form-control" id="username" placeholder="Username"></textarea>
+					</div>
+					<div class="form-group w-20">
+						<input class="form-control" id="rating" placeholder="Rating (out of 5)"></textarea>
+					</div>
+					<div class="form-group w-100">
+						<input class="form-control w-100" id="review" placeholder="What do you think?"></textarea>
+					</div>
 					<button type="button" class="btn btn-primary">Submit Review</button>
-				</div>
+				</form>
 			</div>
 		{% else %}
 			Have a review for this officer? Log in or register to create a review!
 		{% endif %}
-
 		{% if reviews %}
 			<div class="container-fluid">
 				{% for review in reviews %}
