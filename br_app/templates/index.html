@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>
+  </title>
+{% include "head.html" %}
+<body>
+
+  <div class="header">
+    <div class="innerheader">
+      <div class="logo">
+        <h1>RATE<span>MYOFFICER</span></h1>
+      </div>
+      <ul class="navigation">
+        <a href="http://www.google.com"><li>Home</li></a>
+        <a href="#"><li>About</li></a>
+        <a href="#"><li>Register</li></a>
+        <a href="#"><li>Sign in</li></a>
+        <a href="#"><li>Help</li></a>
+      </ul>
+    </div>
+  </div>
+<!-- ------------------------------>
+	<div class="container d-flex h-100">
+		<div class="row justify-content-center align-self-center">
+			<form class="form-inline" action="/search" method="get" id="form">
+				<div class="form-group">
+					<input class="form-control" type="text" name="first" placeholder="First Name" >
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="last" placeholder="Last Name" >
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="badge" placeholder="Badge Number" >
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="city" placeholder="Department" >
+				</div>
+				<input type="submit" form="form" class="btn btn-info" value="Search">
+			</form>
+      		</div>
+	</div>
+</body>
+</html>

@@ -2,32 +2,39 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Officer
+from .models import Officer, Review
 
 # Create your views here.
 
 def index(request):
-    return HttpResponse("This is the review page.")
+    template = loader.get_template('index.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 def profile(request, officer_id):
-    officer_data = Officers.objects.raw('SELECT * FROM officers \
-                                       WHERE profileid==officer_id')
-    context = {'officer_data': officer_data}
-    return render(request,'profile.html',context)
+    template = loader.get_template('profile.html')
+    officer = Officer.objects.raw('SELECT * FROM officer WHERE profile_id = %s;' % (officer_id))[0]
+    reviews = [p for p in Review.objects.raw('SELECT * FROM review WHERE officer_id = %s;' % (officer_id))]
+    context = {'officer': officer, 'reviews': reviews, 'logged_in': True}
+    return HttpResponse(template.render(context, request))
 
 def add_review(request):
     return HttpResponse()
 
 def search(request):
-    first = request.GET.get('first', '%%')
-    last = request.GET.get('last', '%%')
-    badge = request.GET.get('badge', '%%')
-    city = request.GET.get('city', '%%')
+    first = request.GET.get('first')
+    last = request.GET.get('last')
+    badge = request.GET.get('badge')
+    city = request.GET.get('city')
+
+    first = (first if (first != '') else '%%')
+    last = (last if (last != '') else '%%')
+    badge = (badge if (badge != '') else '%%')
+    city = (city if (city != '') else '%%')
+
     template = loader.get_template('results.html')
     query = 'SELECT * FROM officer WHERE firstName LIKE \'%s\' AND lastName LIKE \'%s\' AND badgeNumber LIKE \'%s\' AND city LIKE \'%s\';' % (first, last, badge, city)
-    print(query)
     officers = [p for p in Officer.objects.raw(query)]
-    print(officers)
     context = {
             'officers' : officers
     }
