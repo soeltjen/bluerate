@@ -91,17 +91,6 @@ input {
 ::-ms-input-placeholder {
 	color:lightgreen;
 }
-.form-inline{
-	border: 3px solid red;
-	height:40px;
-	width:550px;
-	border-radius:50px;
-	padding: 0px 9px;
-	outline: none;
-	font-size: 18px;
-	color:darkblue;
-
-}
 /*
 .btn{
 	position: absolute;
