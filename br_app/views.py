@@ -19,6 +19,11 @@ def profile(request, officer_id):
     return HttpResponse(template.render(context, request))
 
 def add_review(request):
+    username = request.GET.get('username')
+    rating = request.GET.get('rating')
+    review_text = request.GET.get('review')
+    review = Review(description=review_text,user=username, stars=rating)
+    review.save()
     return HttpResponse()
 
 def search(request):
