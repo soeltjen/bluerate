@@ -7,11 +7,11 @@ CREATE TABLE review (
   PRIMARY KEY (user_id,officer_id),
   KEY user_id_idx (user_id),
   KEY officer_id_idx (officer_id),
-  CONSTRAINT officer_id FOREIGN KEY (officer_id) REFERENCES officer (profil_id),
+  CONSTRAINT officer_id FOREIGN KEY (officer_id) REFERENCES officer (profile_id),
   CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES user (u_profile_id)
 );
 
-INSERT INTO review (subject, description, user_id, officer_id) VALUES
-('happy','I am very happy',1,3);
-('unhappy','I am very happy',1,2);
-('Very happy','Hadia helped me with our project',1,5);
+INSERT INTO review (subject, description, user_id, officer_id, stars) VALUES
+('happy','I am very happy',1,3,3),
+('unhappy','I am very unhappy',1,2,1),
+('Very happy','Hadia helped me with our project',1,5,5);
